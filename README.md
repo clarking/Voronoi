@@ -6,8 +6,6 @@
 
 For the Windows version refer to the original version at : https://github.com/mdally/Voronoi 
 
-###Compile using cmake
-
 ### Usage:
 compute the diagram for a set of sites and a bounding box
 ```cpp
