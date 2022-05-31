@@ -4,10 +4,9 @@
 
 ##  Mark Dally's Voronoi C++ library fork adapted for linux.
 
-### For the Windows version refer to the original version at: https://github.com/mdally/Voronoi 
+For the Windows version refer to the original version at : https://github.com/mdally/Voronoi 
 
-##Compile using cmake
-
+###Compile using cmake
 
 ### Usage:
 compute the diagram for a set of sites and a bounding box
