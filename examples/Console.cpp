@@ -1,14 +1,14 @@
-#include "../include/Point2.h"
-#include "../include/Vector2.h"
-#include "../include/VoronoiDiagramGenerator.h"
+#include "Point2.h"
+#include "VoronoiGen.h"
 #include <vector>
 #include <ctime>
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
-#include <limits>
 #include <fstream>
 #include <chrono>
+
+using namespace Voronoi;
 
 bool sitesOrdered(const Point2& s1, const Point2& s2) {
 	if (s1.y < s2.y)
@@ -45,13 +45,13 @@ void genRandomSites(std::vector<Point2>& sites, BoundingBox& bbox, unsigned int 
 
 //test the average time it takes to compute a Lloyd's Relaxation for a few different numbers of input sites
 int main() {
-	VoronoiDiagramGenerator vdg = VoronoiDiagramGenerator();
+	VoronoiGenerator vdg = VoronoiGenerator();
 	Diagram* diagram = nullptr;
 	std::vector<Point2>* sites;
 	BoundingBox bbox;
 
-	const int numTests = 100;
-	const int numTestsPerRun = 100;
+	const int numTests = 10;
+	const int numTestsPerRun = 10;
 	int64_t testRuns[numTests][numTestsPerRun];
 
 	std::ofstream outFile;

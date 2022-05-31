@@ -1,19 +1,19 @@
-#ifndef _BEACHLINE_H_
-#define _BEACHLINE_H_
+#pragma once
 
 #include "RBTree.h"
 
-struct Site;
-struct Edge;
-struct CircleEvent;
-struct BeachSection {
-	Site* site;
-	Edge* edge;
-	treeNode<CircleEvent>* circleEvent;
+namespace Voronoi {
+	struct Site;
+	struct Edge;
+	struct CircleEvent;
 
-	BeachSection() : site(nullptr), edge(nullptr), circleEvent(nullptr) {};
-	~BeachSection() {};
-	BeachSection(Site* _site) : site(_site), edge(nullptr), circleEvent(nullptr) {};
-};
+	struct BeachSection {
+		Site *site;
+		Edge *edge;
+		treeNode<CircleEvent> *circleEvent;
 
-#endif
+		BeachSection() : site(nullptr), edge(nullptr), circleEvent(nullptr) {};
+		~BeachSection() {};
+		BeachSection(Site *_site) : site(_site), edge(nullptr), circleEvent(nullptr) {};
+	};
+}

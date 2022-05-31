@@ -1,17 +1,14 @@
-#include "../include/Point2.h"
-#include "../include/Vector2.h"
-#include "../include/VoronoiDiagramGenerator.h"
+#include "Point2.h"
+#include "VoronoiGen.h"
 #include <vector>
 #include <ctime>
 #include <iostream>
 #include <algorithm>
-#include <limits>
 
-// GLEW
-#define GLEW_STATIC
-#include <GLEW/glew.h>
-// GLFW
 #include <GLFW/glfw3.h>
+
+using namespace Voronoi;
+
 // Function prototypes
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 // Window dimensions
@@ -31,6 +28,7 @@ const GLchar* fragmentShaderSource =
 	"{\n"
 	"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 	"}\n\0";
+
 double normalize(double in, int dimension) {
 	return in / (float)dimension*1.8 - 0.9;
 }
@@ -90,7 +88,7 @@ void genRandomSites(std::vector<Point2>& sites, BoundingBox& bbox, unsigned int 
 int main() {
 	unsigned int nPoints;
 	unsigned int dimension = 1000000;
-	VoronoiDiagramGenerator vdg = VoronoiDiagramGenerator();
+	VoronoiGenerator vdg = VoronoiGenerator();
 	Diagram* diagram = nullptr;
 	
 	std::vector<Point2>* sites;
@@ -106,9 +104,9 @@ int main() {
 	// Set the required callback functions
 	glfwSetKeyCallback(window, key_callback);
 	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
-	glewExperimental = GL_TRUE;
+	//glewExperimental = GL_TRUE;
 	// Initialize GLEW to setup the OpenGL Function pointers
-	glewInit();
+	//glewInit();
 	// Define the viewport dimensions
 	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	// Uncommenting this call will result in wireframe polygons.

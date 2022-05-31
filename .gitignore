@@ -4,4 +4,6 @@
 *.lib
 *.tlog
 *.idb
+bin/
+build/
 screenshots/

@@ -1,39 +1,40 @@
-#ifndef _CIRCLE_EVENT_QUEUE_H_
-#define _CIRCLE_EVENT_QUEUE_H_
+#pragma once
 
 #include "RBTree.h"
 #include "BeachLine.h"
 
-struct Site;
-struct BeachSection;
+namespace Voronoi {
 
-struct CircleEvent {
-	Site* site;
-	double x;
-	double y;
-	double yCenter;
-	treeNode<BeachSection>* beachSection;
+	struct Site;
+	struct BeachSection;
 
-	CircleEvent() {};
-	~CircleEvent() {};
-	CircleEvent(Site* _site, double _x, double _y, double _yCenter, treeNode<BeachSection>* _section) {
-		site = _site;
-		x = _x;
-		y = _y;
-		yCenter = _yCenter;
-		beachSection = _section;
-	}
-};
+	struct CircleEvent {
+		Site *site;
+		double x;
+		double y;
+		double yCenter;
+		treeNode<BeachSection> *beachSection;
 
-struct CircleEventQueue {
-	treeNode<CircleEvent>* firstEvent;
-	RBTree<CircleEvent> eventQueue;
+		CircleEvent() {};
+		~CircleEvent() {};
+		CircleEvent(Site *_site, double _x, double _y, double _yCenter, treeNode<BeachSection> *_section) {
+			site = _site;
+			x = _x;
+			y = _y;
+			yCenter = _yCenter;
+			beachSection = _section;
+		}
+	};
 
-	CircleEventQueue() : firstEvent(nullptr) {};
-	~CircleEventQueue() {};
+	struct CircleEventQueue {
+		treeNode<CircleEvent> *firstEvent;
+		RBTree<CircleEvent> eventQueue;
 
-	void addCircleEvent(treeNode<BeachSection>* section);
-	void removeCircleEvent(treeNode<BeachSection>* section);
-};
+		CircleEventQueue() : firstEvent(nullptr) {};
+		~CircleEventQueue() {};
 
-#endif
+		void addCircleEvent(treeNode<BeachSection> *section);
+
+		void removeCircleEvent(treeNode<BeachSection> *section);
+	};
+}
